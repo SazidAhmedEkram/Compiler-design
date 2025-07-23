@@ -23,3 +23,128 @@ int main()
         cout << "Not numeric constant";
     return 0;
 }
+
+/*2. Write a program to determine whether the Given Input is Operators or Not. (Arithmetic
+Operators +, -, *, /, %, =)
+e.g., 2+3=5
+Ans:
+operator1: +
+operator2: =*/
+#include<iostream>
+using namespace std;
+int main()
+{
+    string a;
+    cin>>a;
+
+    char op[100];
+    int n = 0;
+
+    for(int i=0; i<a.length(); i++)
+    {
+        switch(a[i])
+        {
+        case '+':
+            op[n++] = '+';
+            break;
+        case '-':
+            op[n++] = '-';
+            break;
+        case '*':
+            op[n++] = '*';
+            break;
+        case '/':
+            op[n++] = '/';
+            break;
+        case '%':
+            op[n++] = '%';
+            break;
+        case '=':
+             op[n++] = '=';
+             break;
+        default:
+            {
+
+            }
+
+        }
+    }
+
+    for(int i=0; i<n;i++)
+    {
+        cout << "Operator " << i+1 << ": " << op[i] << endl;
+    }
+    return 0;
+}
+
+/*3. Write a program to determine whether the Given Input is Comment line(s) or Not.
+e.g.
+//single line comment
+/* multiple line
+Comment */
+#include<iostream>
+using namespace std;
+int main()
+{
+    string a;
+    cin>>a;
+
+
+    if(a[0] == '/' && a[1] == '/')
+        cout << "Single line comment";
+
+    if(a[a.length()-1] == '/' &&  a[a.length()-2] == '*' && a[0] == '/' && a[1] == '*')
+        cout << "Multi line comment";
+    else{
+        cout << "Not";
+    }
+
+    return 0;
+}
+
+/*4. Write a program to determine whether the Given Input is Identifier or Not. [H. W.]
+Conditions/convention to detect identifier:
+a) The first character should be alphabet characters/underscore (A-Z, a-z, _)
+b) From the Second character should be alpha-numeric characters/underscore (A-Z, a-z, _ , 0-9)*/
+#include<iostream>
+using namespace std;
+int main()
+{
+    string a;
+    cin>>a;
+
+    //65-90 ; 97-122; 95
+    bool indentify = true;
+    bool reserveWord = false;
+    if(!((a[0]>=65 && a[0] <= 90) || (a[0]>=97 && a[0] <= 122 || (a[0] ==95))))
+        indentify = false;
+
+
+        if(a == "int" || a == "bool" ||a == "float" ||a == "string" ||a == "double"  ||a == "long" || a == "namespace")
+            reserveWord = true;
+
+
+    for(int i=1; i<a.length(); i++)
+    {
+        if(!((a[i]>=65 && a[i] <= 90) || (a[i]>=97 && a[i] <= 122) || (a[i] = 95)||(a[i]>=48 && a[i]<=57 )))
+        indentify = false;
+
+    }
+if(reserveWord == true)
+{
+    cout << "Input is a reserve word";
+}
+else{
+    if(indentify == true)
+    cout << "Input is identifier.";
+
+     if(indentify == false)
+        cout << "Input is not identifier.";
+
+}
+
+
+
+    return 0;
+}
+
