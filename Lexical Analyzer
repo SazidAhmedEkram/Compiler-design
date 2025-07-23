@@ -1,0 +1,25 @@
+/* Write a program to determine whether the Given Input is Numeric Constant or Not.
+e.g. (if 100, 991, 1810 etc are given as an input , then the program says “numeric constant”, or
+if we take input as “ABCD”, “A1B2”, then the program will say that this is “not numeric”). */
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    string ab;
+    cin>>ab;
+    bool numeric = true;
+    for(int i=0; i<ab.length(); i++)
+    {
+       //65-90 ; 97-122 ; 48-57
+        if(!(ab[i]>=48 && ab[i]<=57) )
+        {
+            numeric = false;
+        }
+    }
+    if(numeric == true)
+        cout << "Numeric constant";
+    else
+        cout << "Not numeric constant";
+    return 0;
+}
